@@ -3,16 +3,14 @@ import path from 'path';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import routes from './routes';
-import RedisConn from './lib/connection';
+
+// Active to connect redis
+// import RedisConn from './lib/connection';
 
 class App {
   constructor(port) {
     const app = this.expressApp = express();
 
-    // Connect to redis
-    new RedisConn();
-
-    //
     app.disable('x-powered-by');
     app.use(logger('dev', {
       skip: () => app.get('env') === 'test'
